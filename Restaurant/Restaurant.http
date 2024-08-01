@@ -1,0 +1,11 @@
+@Restaurant_HostAddress = http://localhost:5042
+
+GET {{Restaurant_HostAddress}}/todos/
+Accept: application/json
+
+###
+
+GET {{Restaurant_HostAddress}}/todos/1
+Accept: application/json
+
+###
