@@ -2,55 +2,55 @@
 using Restaurant.Contracts;
 using Restaurant.Domain;
 
-namespace Restaurant.Application
+public class FoodService : IFoodService
 {
-    public class FoodService : IFoodService
+    private readonly IMapper _mapper;
+    private List<FoodItem> _foodItems = new List<FoodItem>();
+    private int _nextId = 1;
+
+    public FoodService(IMapper mapper)
     {
-        private readonly IMapper _mapper;
-        private List<FoodItem> _foodItems = new List<FoodItem>
-        {
-            new FoodItem("burger", 30m),
-            new FoodItem("pizza", 50m),
-            new FoodItem("falafel", 4.5m)
-        };
+        _mapper = mapper;
+        // Seed with initial data
+        _foodItems.Add(new FoodItem(1,"burger", 30m) { Id = _nextId++ });
+        _foodItems.Add(new FoodItem(2,"pizza", 50m) { Id = _nextId++ });
+        _foodItems.Add(new FoodItem(3,"falafel", 4.5m) { Id = _nextId++ });
+    }
 
-        public FoodService(IMapper mapper)
+    public List<FoodItemDto> GetFoodItems()
+    {
+        return _mapper.Map<List<FoodItemDto>>(_foodItems);
+    }
+
+    public void AddFoodItem(FoodItemDto foodItemDto)
+    {
+        var foodItem = _mapper.Map<FoodItem>(foodItemDto);
+        foodItem.Id = _nextId++; // Set a new unique Id
+        _foodItems.Add(foodItem);
+    }
+
+    public bool DeleteFoodItem(string name)
+    {
+        var item = _foodItems.FirstOrDefault(f => f.Name == name && !f.IsDeleted);
+        if (item == null)
         {
-            _mapper = mapper;
+            return false;
         }
 
-        public List<FoodItemDto> GetFoodItems()
+        item.MarkAsDeleted();
+        _foodItems.Remove(item);
+        return true;
+    }
+
+    public bool UpdateFoodItem(string name, FoodItemDto updatedFoodItemDto)
+    {
+        var item = _foodItems.FirstOrDefault(f => f.Name == name && !f.IsDeleted);
+        if (item == null)
         {
-            return _mapper.Map<List<FoodItemDto>>(_foodItems);
+            return false;
         }
 
-        public void AddFoodItem(FoodItemDto foodItem)
-        {
-             _foodItems.Add(_mapper.Map<FoodItem>(foodItem));
-        }
-
-        public bool DeleteFoodItem(string name)
-        {
-            var item = _foodItems.FirstOrDefault(f => f.Name == name && f.IsDeleted != true);
-            if (item is null)
-            {
-                return false;
-            }
-
-            item.MarkAsDeleted();
-            return true;
-        }
-
-        public bool UpdateFoodItem(string name, FoodItemDto updatedFoodItem)
-        {
-            var item = _foodItems.FirstOrDefault(f => f.Name == name && f.IsDeleted != true);
-            if (item is null)
-            {
-                return false;
-            }
-
-            _mapper.Map(updatedFoodItem, item);
-            return true;
-        }
+        _mapper.Map(updatedFoodItemDto, item);
+        return true;
     }
 }

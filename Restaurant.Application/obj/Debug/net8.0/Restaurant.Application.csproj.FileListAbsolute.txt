@@ -15,3 +15,4 @@ C:\Users\Abdallah\source\repos\Restaurant\Restaurant.Application\obj\Debug\net8.
 C:\Users\Abdallah\source\repos\Restaurant\Restaurant.Application\obj\Debug\net8.0\ref\Restaurant.Application.dll
 C:\Users\Abdallah\source\repos\Restaurant\Restaurant.Application\bin\Debug\net8.0\Restaurant.Contracts.dll
 C:\Users\Abdallah\source\repos\Restaurant\Restaurant.Application\bin\Debug\net8.0\Restaurant.Contracts.pdb
+C:\Users\Abdallah\source\repos\Restaurant\Restaurant.Application\obj\Debug\net8.0\Restaurant.Application.sourcelink.json

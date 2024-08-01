@@ -23,13 +23,15 @@
 
     public class FoodItem : BaseEntity
     {
+        public int Id {  get;  set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
 
         
 
-        public FoodItem(string name, decimal price) 
+        public FoodItem(int id,string name, decimal price) 
         {
+            Id = id;
             Name = name;
             Price = price;
         }

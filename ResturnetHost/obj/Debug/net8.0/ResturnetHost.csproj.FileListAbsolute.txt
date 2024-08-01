@@ -37,3 +37,4 @@ C:\Users\Abdallah\source\repos\Restaurant\ResturnetHost\bin\Debug\net8.0\Restaur
 C:\Users\Abdallah\source\repos\Restaurant\ResturnetHost\bin\Debug\net8.0\Restaurant.Contracts.dll
 C:\Users\Abdallah\source\repos\Restaurant\ResturnetHost\bin\Debug\net8.0\Restaurant.Contracts.pdb
 C:\Users\Abdallah\source\repos\Restaurant\ResturnetHost\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\Abdallah\source\repos\Restaurant\ResturnetHost\obj\Debug\net8.0\ResturnetHost.sourcelink.json

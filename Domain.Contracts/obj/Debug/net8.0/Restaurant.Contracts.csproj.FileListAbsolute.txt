@@ -9,3 +9,4 @@ C:\Users\Abdallah\source\repos\Restaurant\Domain.Contracts\obj\Debug\net8.0\Rest
 C:\Users\Abdallah\source\repos\Restaurant\Domain.Contracts\obj\Debug\net8.0\refint\Restaurant.Contracts.dll
 C:\Users\Abdallah\source\repos\Restaurant\Domain.Contracts\obj\Debug\net8.0\Restaurant.Contracts.pdb
 C:\Users\Abdallah\source\repos\Restaurant\Domain.Contracts\obj\Debug\net8.0\ref\Restaurant.Contracts.dll
+C:\Users\Abdallah\source\repos\Restaurant\Domain.Contracts\obj\Debug\net8.0\Restaurant.Contracts.sourcelink.json
