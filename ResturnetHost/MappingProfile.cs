@@ -7,9 +7,16 @@ public class MappingProfile : Profile
     {
         CreateMap<FoodItem, FoodItemDto>();
         CreateMap<FoodItemDto, FoodItem>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore());
 
-            .ForMember(dest => dest.Id, opt => opt.Ignore()); 
+        CreateMap<AddFoodDto, FoodItem>();
+        CreateMap<UpdateFoodDto, FoodItem>();
+
         CreateMap<DrinkItem, DrinkItemDto>();
-        CreateMap<DrinkItemDto, DrinkItem>().ForMember(dest=>dest.Id, opt => opt.Ignore());
+        CreateMap<DrinkItemDto, DrinkItem>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore());
+
+        CreateMap<AddDrinkDto, DrinkItem>();
+        CreateMap<UpdateDrinkDto, DrinkItem>();
     }
 }

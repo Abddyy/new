@@ -15,7 +15,7 @@ public class DrinkService : IDrinkService
         _drinkItems.Add(new DrinkItem(3, "water", 1) { Id = _nextId++ });
     }
 
-    public void AddDrinkItem(DrinkItemDto drinkItemDto)
+    public void AddDrinkItem(AddDrinkDto drinkItemDto)
     {
         var drinkItem = _mapper.Map<DrinkItem>(drinkItemDto);
         drinkItem.Id = _nextId++;
@@ -40,8 +40,7 @@ public class DrinkService : IDrinkService
         return _mapper.Map<List<DrinkItemDto>>(_drinkItems);
     }
 
-
-    public bool UpdateDrinkItem(string name, DrinkItemDto drinkItemDto)
+    public bool UpdateDrinkItem(string name, UpdateDrinkDto drinkItemDto)
     {
         var item = _drinkItems.FirstOrDefault(f => f.Name == name && !f.IsDeleted);
         if (item == null)
@@ -52,7 +51,4 @@ public class DrinkService : IDrinkService
         _mapper.Map(drinkItemDto, item);
         return true;
     }
-
-
 }
-

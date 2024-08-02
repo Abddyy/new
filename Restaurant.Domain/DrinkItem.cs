@@ -11,6 +11,7 @@ namespace Restaurant.Domain
         public int Id { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
+        public DrinkItem() { } 
         public DrinkItem(int id, string name, int price)
         {
             Id = id;

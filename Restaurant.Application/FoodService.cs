@@ -12,9 +12,9 @@ public class FoodService : IFoodService
     {
         _mapper = mapper;
         // Seed with initial data
-        _foodItems.Add(new FoodItem(1,"burger", 30m) { Id = _nextId++ });
-        _foodItems.Add(new FoodItem(2,"pizza", 50m) { Id = _nextId++ });
-        _foodItems.Add(new FoodItem(3,"falafel", 4.5m) { Id = _nextId++ });
+        _foodItems.Add(new FoodItem(1, "burger", 30) { Id = _nextId++ });
+        _foodItems.Add(new FoodItem(2, "pizza", 50) { Id = _nextId++ });
+        _foodItems.Add(new FoodItem(3, "falafel", 4) { Id = _nextId++ });
     }
 
     public List<FoodItemDto> GetFoodItems()
@@ -22,7 +22,7 @@ public class FoodService : IFoodService
         return _mapper.Map<List<FoodItemDto>>(_foodItems);
     }
 
-    public void AddFoodItem(FoodItemDto foodItemDto)
+    public void AddFoodItem(AddFoodDto foodItemDto)
     {
         var foodItem = _mapper.Map<FoodItem>(foodItemDto);
         foodItem.Id = _nextId++; // Set a new unique Id
@@ -42,7 +42,7 @@ public class FoodService : IFoodService
         return true;
     }
 
-    public bool UpdateFoodItem(string name, FoodItemDto updatedFoodItemDto)
+    public bool UpdateFoodItem(string name, UpdateFoodDto updatedFoodItemDto)
     {
         var item = _foodItems.FirstOrDefault(f => f.Name == name && !f.IsDeleted);
         if (item == null)

@@ -25,11 +25,11 @@
     {
         public int Id {  get;  set; }
         public string Name { get; set; }
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
-        
+        public FoodItem() { }
 
-        public FoodItem(int id,string name, decimal price) 
+        public FoodItem(int id,string name, int price) 
         {
             Id = id;
             Name = name;
