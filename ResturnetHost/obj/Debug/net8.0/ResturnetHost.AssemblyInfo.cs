@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ResturnetHost")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c4417721ffe8ad48eb8630d04d54273bc1e1506b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+984f29a64666fd3d89b440b0803c0dbcc19a8037")]
 [assembly: System.Reflection.AssemblyProductAttribute("ResturnetHost")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ResturnetHost")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

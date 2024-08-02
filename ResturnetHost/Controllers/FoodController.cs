@@ -9,27 +9,45 @@ namespace Restaurant.Host.Controllers
     public class MenuController : ControllerBase
     {
         private readonly IFoodService _foodService;
+        private readonly IDrinkService _drinkService;
 
-        public MenuController(IFoodService foodService)
+        public MenuController(IFoodService foodService, IDrinkService drinkService)
         {
             _foodService = foodService;
+            _drinkService = drinkService;
         }
 
-        [HttpGet("foods")]
-        public ActionResult<IEnumerable<FoodItemDto>> GetFoods()
+        [HttpGet("food")]
+        public ActionResult<IEnumerable<FoodItemDto>> GetFood()
         {
             var foodDtos = _foodService.GetFoodItems();
             return Ok(foodDtos);
         }
 
-        [HttpPost("foods")]
+        [HttpGet("drinks")]
+
+        public ActionResult<IEnumerable<DrinkItemDto>> GetDrinks()
+        {
+            var drinkDtos = _drinkService.GetDrinkItemDtos();
+            return Ok(drinkDtos);
+        }
+
+        [HttpPost("food")]
         public IActionResult AddFood(FoodItemDto foodItem)
         {
             _foodService.AddFoodItem(foodItem);
-            return CreatedAtAction(nameof(GetFoods), new { name = foodItem.Name }, foodItem);
+            return CreatedAtAction(nameof(GetFood), new { name = foodItem.Name }, foodItem);
+        }
+        [HttpPost("drinks")]
+
+        public IActionResult AddDrinks(DrinkItemDto drinkItemDto)
+        {
+            _drinkService.AddDrinkItem(drinkItemDto);
+            return CreatedAtAction(nameof(GetDrinks), new { name = drinkItemDto.Name }, drinkItemDto);
         }
 
-        [HttpDelete("foods/{name}")]
+
+        [HttpDelete("food/{name}")]
         public IActionResult DeleteFood(string name)
         {
             var result = _foodService.DeleteFoodItem(name);
@@ -38,6 +56,19 @@ namespace Restaurant.Host.Controllers
                 return NoContent();
             }
             return NotFound(new { Message = $"food item with name '{name}'is not found." });
+        }
+
+
+        [HttpDelete("drinks/{name}")]
+
+        public IActionResult Deletedrink(string name)
+        {
+            var result = _drinkService.DeleteDrinkItem(name);
+            if (result)
+            {
+                return NoContent();
+            }
+            return NotFound(new { Message = $"Drink item with name '{name}'is not found." });
         }
 
         [HttpPut("foods/{name}")]
@@ -49,6 +80,18 @@ namespace Restaurant.Host.Controllers
                 return NoContent();
             }
             return NotFound(new { Message = $"food item with name '{name}'is not found." });
+        }
+
+
+        [HttpPut("drinks/{name}")]
+        public IActionResult UpdateDrinks(string name, DrinkItemDto drinkItemDto)
+        {
+            var result = _drinkService.UpdateDrinkItem(name, drinkItemDto);
+            if (result)
+            {
+                return NoContent();
+            }
+            return NotFound(new { Message = $"drink item with name '{name}'is not found." });
         }
     }
 }

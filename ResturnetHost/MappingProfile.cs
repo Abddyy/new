@@ -9,5 +9,7 @@ public class MappingProfile : Profile
         CreateMap<FoodItemDto, FoodItem>()
 
             .ForMember(dest => dest.Id, opt => opt.Ignore()); 
+        CreateMap<DrinkItem, DrinkItemDto>();
+        CreateMap<DrinkItemDto, DrinkItem>().ForMember(dest=>dest.Id, opt => opt.Ignore());
     }
 }
